@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Panel del profesional · Guia Pro</title>
+
+  <link rel="stylesheet" href="./styles.css" />
+ 
+</head>
+
+<body>
+
+  <header class="site-header">
+    <div class="container header-inner">
+
+      <a href="./index.html" class="brand">
+    <span class="brand-mark">GP</span>
+    <span class="brand-name">Guia Pro</span>
+</a>
+
+      <nav class="main-nav" aria-label="Navegación principal">
+
+        <a
+          href="./index.html"
+          class="main-nav-link"
+        >
+          Buscar
+        </a>
+
+        <a
+          id="public-profile-link"
+          href="#"
+          class="main-nav-link"
+        >
+          Ver mi perfil público
+        </a>
+
+      </nav>
+
+      <div class="header-actions">
+
+        <div class="header-location">
+          Resistencia, Chaco
+        </div>
+
+        <button
+          id="logout-button"
+          class="button secondary-button"
+          type="button"
+        >
+          Cerrar sesión
+        </button>
+
+      </div>
+
+    </div>
+  </header>
+
+  <main class="container professional-page">
+
+    <section id="loading-state" class="state-card">
+      <p>Cargando panel...</p>
+    </section>
+
+    <section id="error-state" class="state-card error-state hidden">
+
+      <h2>No pudimos cargar el panel</h2>
+
+      <p id="error-message">
+        Ocurrió un error al cargar la información.
+      </p>
+
+      <a
+        href="./index.html"
+        class="button secondary-button"
+      >
+        Volver al buscador
+      </a>
+
+    </section>
+
+    <section id="professional-content" class="hidden">
+
+      <!-- ======================================================
+           CABECERA DEL PROFESIONAL
+           ====================================================== -->
+
+      <div class="professional-header-card">
+
+        <div>
+
+          <span class="eyebrow">
+            Panel del profesional
+          </span>
+
+          <h1 id="professional-name">
+            —
+          </h1>
+
+          <p
+            id="professional-meta"
+            class="professional-meta"
+          >
+            —
+          </p>
+
+        </div>
+
+        <div
+          id="professional-rating"
+          class="professional-rating"
+        >
+          —
+        </div>
+
+      </div>
+
+
+      <!-- ======================================================
+           PERFIL
+           ====================================================== -->
+
+      <section
+        id="profile-edit-section"
+        class="professional-section"
+      >
+
+        <div class="section-heading">
+
+          <div>
+
+            <span class="eyebrow">
+              Mi perfil
+            </span>
+
+            <h2>
+              Información pública
+            </h2>
+
+          </div>
+
+          <button
+            id="edit-profile-button"
+            class="button secondary-button"
+            type="button"
+          >
+            Editar perfil
+          </button>
+
+        </div>
+
+
+        <!-- ====================================================
+             ESTADO DEL PERFIL
+             ==================================================== -->
+
+        <div class="profile-status-grid">
+
+          <div class="profile-status-card">
+
+            <span class="eyebrow">
+              Identidad
+            </span>
+
+            <strong id="profile-identity-status">
+              —
+            </strong>
+
+            <span>
+              Estado de verificación
+            </span>
+
+          </div>
+
+
+          <div class="profile-status-card">
+
+            <span class="eyebrow">
+              Experiencia
+            </span>
+
+            <strong id="profile-experience-status">
+              —
+            </strong>
+
+            <span>
+              Años declarados
+            </span>
+
+          </div>
+
+
+          <div class="profile-status-card">
+
+            <span class="eyebrow">
+              Reputación
+            </span>
+
+            <strong id="profile-reputation-status">
+              —
+            </strong>
+
+            <span id="profile-reputation-detail">
+              Sin opiniones todavía
+            </span>
+
+          </div>
+
+
+          <div class="profile-status-card">
+
+            <span class="eyebrow">
+              Trabajos
+            </span>
+
+            <strong id="profile-jobs-status">
+              —
+            </strong>
+
+            <span id="profile-jobs-detail">
+              Registrados en Guia Pro
+            </span>
+
+          </div>
+
+        </div>
+
+        <p class="profile-status-note">
+          La identidad y la reputación se construyen y verifican dentro de Guia Pro.
+        </p>
+
+
+        <section class="professional-reviews">
+
+          <div class="section-heading">
+
+            <div>
+
+              <span class="eyebrow">
+                EXPERIENCIAS DE CLIENTES
+              </span>
+
+              <h2>
+                Opiniones recibidas
+              </h2>
+
+            </div>
+
+          </div>
+
+          <div
+            id="professional-reviews-list"
+            class="professional-reviews-list"
+          ></div>
+
+          <div
+            id="professional-reviews-empty"
+            class="state-card hidden"
+          >
+
+            <h3>
+              Todavía no tenés opiniones
+            </h3>
+
+            <p>
+              Las valoraciones de tus clientes aparecerán acá después
+              de que completen una valoración.
+            </p>
+
+          </div>
+
+        </section>
+
+
+        <!-- ====================================================
+             FORMULARIO DE EDICIÓN
+             ==================================================== -->
+
+        <form
+          id="profile-edit-form"
+          class="job-form hidden"
+        >
+
+          <div class="form-field">
+
+            <label for="profile-description">
+              Descripción
+            </label>
+
+            <textarea
+              id="profile-description"
+              name="description"
+              rows="4"
+              maxlength="2000"
+              placeholder="Contá brevemente qué hacés y qué tipo de trabajos realizás."
+            ></textarea>
+
+          </div>
+
+
+          <div class="form-field">
+
+            <label for="profile-years-experience">
+              Años de experiencia
+            </label>
+
+            <input
+              id="profile-years-experience"
+              name="years_experience"
+              type="number"
+              min="0"
+              max="80"
+            >
+
+          </div>
+
+
+          <div class="form-field">
+
+            <label for="profile-whatsapp">
+              WhatsApp
+            </label>
+
+            <input
+              id="profile-whatsapp"
+              name="whatsapp"
+              type="text"
+              maxlength="50"
+            >
+
+          </div>
+
+
+          <div class="form-field">
+
+            <label for="profile-instagram">
+              Instagram
+            </label>
+
+            <input
+              id="profile-instagram"
+              name="instagram"
+              type="text"
+              maxlength="150"
+              placeholder="@usuario"
+            >
+
+          </div>
+
+
+          <div class="form-field">
+
+            <label for="profile-categories">
+              Servicios
+            </label>
+
+            <select
+              id="profile-categories"
+              name="category_ids"
+              multiple
+            ></select>
+
+            <small>
+              Podés seleccionar más de un servicio.
+            </small>
+
+          </div>
+
+
+          <div class="form-field">
+
+            <label for="profile-locations">
+              Zonas donde trabajás
+            </label>
+
+            <select
+              id="profile-locations"
+              name="location_ids"
+              multiple
+            ></select>
+
+            <small>
+              Podés seleccionar más de una zona.
+            </small>
+
+          </div>
+
+
+          <div class="form-actions">
+
+            <button
+              type="submit"
+              class="button primary-button"
+            >
+              Guardar cambios
+            </button>
+
+            <button
+              type="button"
+              id="cancel-profile-button"
+              class="button secondary-button"
+            >
+              Cancelar
+            </button>
+
+          </div>
+
+        </form>
+
+
+        <div
+          id="profile-form-message"
+          class="form-message hidden"
+        ></div>
+
+      </section>
+
+
+      <!-- ======================================================
+           TRABAJOS
+           ====================================================== -->
+
+      <section class="professional-section">
+
+        <div class="section-heading">
+
+          <div>
+
+            <span class="eyebrow">
+              Gestión
+            </span>
+
+            <h2>
+              Mis trabajos
+            </h2>
+
+          </div>
+
+          <button
+            id="new-job-button"
+            class="button primary-button"
+            type="button"
+          >
+            + Registrar trabajo
+          </button>
+
+        </div>
+
+
+        <div
+          id="jobs-list"
+          class="jobs-list"
+        >
+          <!-- Los trabajos se cargan desde la API -->
+        </div>
+
+
+        <div
+          id="jobs-empty"
+          class="state-card hidden"
+        >
+
+          <h3>
+            Todavía no tenés trabajos registrados
+          </h3>
+
+          <p>
+            Registrá un trabajo terminado para poder solicitar
+            una valoración a tu cliente.
+          </p>
+
+        </div>
+
+      </section>
+
+
+      <!-- ======================================================
+           NUEVO TRABAJO
+           ====================================================== -->
+
+      <section
+        id="new-job-panel"
+        class="professional-section job-form-section hidden"
+      >
+
+        <div class="section-heading">
+
+          <div>
+
+            <span class="eyebrow">
+              Nuevo trabajo
+            </span>
+
+            <h2>
+              Registrar trabajo
+            </h2>
+
+          </div>
+
+        </div>
+
+
+        <form
+          id="new-job-form"
+          class="job-form"
+        >
+
+          <div class="form-field">
+
+            <label for="job-title">
+              Trabajo
+            </label>
+
+            <input
+              id="job-title"
+              name="title"
+              type="text"
+              maxlength="150"
+              required
+              placeholder="Ej. Instalación eléctrica domiciliaria"
+            />
+
+          </div>
+
+
+          <div class="form-field">
+
+            <label for="job-description">
+              Descripción
+            </label>
+
+            <textarea
+              id="job-description"
+              name="description"
+              rows="4"
+              maxlength="2000"
+              placeholder="Contá brevemente qué trabajo realizaste."
+            ></textarea>
+
+          </div>
+
+
+          <div class="form-actions">
+
+            <button
+              type="submit"
+              class="button primary-button"
+            >
+              Registrar trabajo
+            </button>
+
+            <button
+              type="button"
+              id="cancel-job-button"
+              class="button secondary-button"
+            >
+              Cancelar
+            </button>
+
+          </div>
+
+        </form>
+
+
+        <div
+          id="job-form-message"
+          class="form-message hidden"
+        ></div>
+
+      </section>
+
+    </section>
+
+  </main>
+
+
+  <script src="./professional.js"></script>
+
+</body>
+</html>

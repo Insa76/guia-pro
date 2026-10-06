@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Activar cuenta — Guia Pro</title>
+
+  <style>
+    :root {
+      --bg: #f5f5f3;
+      --surface: #ffffff;
+      --text: #171717;
+      --muted: #6b6b6b;
+      --border: #deded9;
+      --primary: #171717;
+      --success: #216e4e;
+      --error: #a33a3a;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: var(--bg);
+      color: var(--text);
+      font-family:
+        Inter,
+        ui-sans-serif,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      padding: 24px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 460px;
+    }
+
+    .brand {
+      text-align: center;
+      margin-bottom: 28px;
+    }
+
+    .brand-name {
+      font-size: 24px;
+      font-weight: 700;
+      letter-spacing: -0.04em;
+    }
+
+    .brand-subtitle {
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 32px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
+    }
+
+    .loading,
+    .error,
+    .success {
+      text-align: center;
+    }
+
+    .loading {
+      color: var(--muted);
+      padding: 20px 0;
+    }
+
+    .icon {
+      width: 54px;
+      height: 54px;
+      margin: 0 auto 20px;
+
+      border-radius: 50%;
+      background: #f0f0ec;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      font-size: 24px;
+    }
+
+    h1 {
+      margin: 0 0 10px;
+      font-size: 27px;
+      line-height: 1.15;
+      letter-spacing: -0.04em;
+    }
+
+    .description {
+      margin: 0 0 28px;
+      color: var(--muted);
+      line-height: 1.55;
+      font-size: 15px;
+    }
+
+    .form-group {
+      margin-bottom: 18px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 7px;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    input {
+      width: 100%;
+      height: 48px;
+
+      border: 1px solid var(--border);
+      border-radius: 10px;
+
+      padding: 0 14px;
+
+      font-size: 16px;
+      color: var(--text);
+      background: #fff;
+
+      outline: none;
+    }
+
+    input:focus {
+      border-color: #999;
+    }
+
+    .password-hint {
+      margin-top: 7px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    button {
+      width: 100%;
+      height: 50px;
+
+      border: 0;
+      border-radius: 10px;
+
+      background: var(--primary);
+      color: #fff;
+
+      font-size: 15px;
+      font-weight: 600;
+
+      cursor: pointer;
+      transition: opacity 0.2s ease;
+    }
+
+    button:hover {
+      opacity: 0.88;
+    }
+
+    button:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    .message {
+      margin-top: 16px;
+      padding: 12px 14px;
+
+      border-radius: 10px;
+
+      font-size: 14px;
+      line-height: 1.4;
+
+      display: none;
+    }
+
+    .message.error {
+      display: block;
+      background: #fff0f0;
+      color: var(--error);
+    }
+
+    .message.success {
+      display: block;
+      background: #edf8f2;
+      color: var(--success);
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    .success-actions {
+      margin-top: 24px;
+    }
+
+    .success-actions button {
+      background: var(--success);
+    }
+
+    .footer {
+      margin-top: 22px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 12px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <main class="container">
+
+    <div class="brand">
+      <div class="brand-name">Guia Pro</div>
+      <div class="brand-subtitle">
+        Encontrá quién puede resolverlo.
+      </div>
+    </div>
+
+    <section class="card">
+
+      <!-- Cargando -->
+      <div id="loading-state" class="loading">
+        Verificando tu enlace de activación...
+      </div>
+
+      <!-- Error -->
+      <div id="error-state" class="error hidden">
+
+        <div class="icon">!</div>
+
+        <h1>Enlace no válido</h1>
+
+        <p id="error-text" class="description">
+          Este enlace de activación no es válido o ya venció.
+        </p>
+
+      </div>
+
+      <!-- Formulario -->
+      <div id="activation-state" class="hidden">
+
+        <div class="icon">✓</div>
+
+        <h1 id="welcome-title">
+          Activá tu cuenta
+        </h1>
+
+        <p class="description">
+          Tu perfil fue aprobado. Creá una contraseña para acceder a tu cuenta profesional de Guia Pro.
+        </p>
+
+        <form id="activation-form">
+
+          <div class="form-group">
+            <label for="password">
+              Nueva contraseña
+            </label>
+
+            <input
+              id="password"
+              type="password"
+              minlength="8"
+              maxlength="200"
+              autocomplete="new-password"
+              required
+            />
+
+            <div class="password-hint">
+              Mínimo 8 caracteres.
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="password-confirmation">
+              Repetir contraseña
+            </label>
+
+            <input
+              id="password-confirmation"
+              type="password"
+              minlength="8"
+              maxlength="200"
+              autocomplete="new-password"
+              required
+            />
+          </div>
+
+          <button
+            id="activate-button"
+            type="submit"
+          >
+            Activar mi cuenta
+          </button>
+
+        </form>
+
+        <div
+          id="form-message"
+          class="message"
+        ></div>
+
+      </div>
+
+      <!-- Éxito -->
+      <div id="success-state" class="success hidden">
+
+        <div class="icon">✓</div>
+
+        <h1>Cuenta activada</h1>
+
+        <p class="description">
+          Tu cuenta profesional de Guia Pro ya está activa.
+          Ahora podés ingresar a tu panel.
+        </p>
+
+        <div class="success-actions">
+
+          <button id="login-button">
+            Ir al inicio de sesión
+          </button>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <div class="footer">
+      Guia Pro · Tu trabajo habla por vos.
+    </div>
+
+  </main>
+
+  <script src="./professional-activation.js"></script>
+
+</body>
+</html>

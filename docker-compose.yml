@@ -1,0 +1,49 @@
+services:
+  db:
+    image: postgres:16
+    container_name: guia-pro-db
+    restart: unless-stopped
+
+    environment:
+      POSTGRES_DB: guia_pro
+      POSTGRES_USER: guia_pro
+      POSTGRES_PASSWORD: guia_pro
+
+    ports:
+      - "5433:5432"
+
+    volumes:
+      - guia_pro_postgres:/var/lib/postgresql/data
+
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U guia_pro -d guia_pro"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+
+  api:
+    build: ./backend
+    container_name: guia-pro-api
+    restart: unless-stopped
+
+    env_file:
+      - ./backend/.env
+
+    environment:
+      DATABASE_URL: postgresql+psycopg://guia_pro:guia_pro@db:5432/guia_pro
+
+    ports:
+      - "8000:8000"
+
+    volumes:
+      - ./backend:/app
+      - ./frontend:/frontend
+
+    depends_on:
+      db:
+        condition: service_healthy
+
+
+volumes:
+  guia_pro_postgres:

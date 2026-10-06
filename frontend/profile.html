@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Perfil profesional — Guia Pro</title>
+
+<link rel="stylesheet" href="./styles.css">
+
+</head>
+
+<body>
+
+<header class="site-header">
+    <div class="container header-inner">
+
+    <a href="./index.html" class="brand">
+        <span class="brand-mark">GP</span>
+        <span class="brand-name">Guia Pro</span>
+    </a>
+
+    <nav class="main-nav" aria-label="Navegación principal">
+
+        <a
+            href="./index.html"
+            class="main-nav-link"
+        >
+            Buscar
+        </a>
+
+        <a
+            href="./professional-login.html"
+            class="main-nav-link"
+        >
+            Soy profesional
+        </a>
+
+    </nav>
+
+    <span class="header-location">
+        Resistencia, Chaco
+    </span>
+
+</div>
+
+</header>
+
+<main>
+
+<section class="profile-section">
+
+    <div class="container">
+
+        <a href="./index.html" class="back-link">
+            ← Volver a buscar
+        </a>
+
+        <div id="loading" class="state-message">
+            Cargando perfil...
+        </div>
+
+        <div id="error" class="state-message error hidden"></div>
+
+
+        <article id="profile" class="profile-page hidden">
+
+            <div class="profile-hero">
+
+                <div class="profile-avatar" id="profile-avatar">
+                    --
+                </div>
+
+                <div class="profile-main">
+
+                    <div class="profile-name-row">
+
+                        <h1 id="profile-name">
+                            Profesional
+                        </h1>
+
+                        <span
+                            id="profile-verified"
+                            class="verified-badge hidden"
+                        >
+                            ✓ Identidad verificada
+                        </span>
+
+                    </div>
+
+                    <p
+                        id="profile-profession"
+                        class="profile-profession"
+                    ></p>
+
+                    <p
+                        id="profile-location"
+                        class="profile-location"
+                    ></p>
+
+                </div>
+
+            </div>
+
+
+            <div class="profile-grid">
+
+                <section class="profile-card profile-about">
+
+                    <span class="eyebrow">
+                        SOBRE EL PROFESIONAL
+                    </span>
+
+                    <p id="profile-description"></p>
+
+                    <div
+                        id="profile-experience"
+                        class="profile-experience"
+                    ></div>
+
+                </section>
+
+
+                <section class="profile-card profile-reputation">
+
+                    <span class="eyebrow">
+                        REPUTACIÓN
+                    </span>
+
+                    <div class="reputation-main">
+
+                        <strong id="profile-rating">
+                            0.0
+                        </strong>
+
+                        <span class="rating-stars">
+                            ★★★★★
+                        </span>
+
+                    </div>
+
+                    <p id="profile-review-count"></p>
+
+                    <div class="reputation-details">
+
+                        <div>
+                            <strong id="profile-jobs">
+                                0
+                            </strong>
+                            <span>trabajos registrados</span>
+                        </div>
+
+                        <div>
+                            <strong id="profile-rated-jobs">
+                                0
+                            </strong>
+                            <span>trabajos calificados</span>
+                        </div>
+
+                    </div>
+
+                </section>
+
+            </div>
+
+
+            <section class="profile-card profile-services">
+
+                <span class="eyebrow">
+                    SERVICIOS Y ZONAS
+                </span>
+
+                <div
+                    id="profile-categories"
+                    class="profile-tags"
+                ></div>
+
+                <div
+                    id="profile-locations"
+                    class="profile-tags"
+                ></div>
+
+            </section>
+
+
+            <section
+                id="reviews-section"
+                class="profile-card profile-reviews"
+            >
+
+                <div class="reviews-header">
+
+                    <div>
+                        <span class="eyebrow">
+                            EXPERIENCIAS DE CLIENTES
+                        </span>
+
+                        <h2>Opiniones</h2>
+                    </div>
+
+                </div>
+
+                <div id="reviews-list"></div>
+
+            </section>
+
+
+            <section class="profile-contact">
+
+                <div>
+
+                    <span class="eyebrow">
+                        CONTACTO
+                    </span>
+
+                    <h2>
+                        ¿Necesitás este servicio?
+                    </h2>
+
+                    <p>
+                        Contactá directamente al profesional.
+                    </p>
+
+                </div>
+
+                <div
+                    id="profile-contact-actions"
+                    class="contact-actions"
+                ></div>
+
+            </section>
+
+        </article>
+
+    </div>
+
+</section>
+
+</main>
+
+<script src="./profile.js"></script>
+
+</body>
+</html>

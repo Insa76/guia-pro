@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Guia Pro — Encontrá quién puede resolverlo</title>
+
+    <link
+        rel="stylesheet"
+        href="./styles.css"
+    >
+</head>
+
+<body>
+
+<header class="site-header">
+    <div class="container header-inner">
+
+        <a
+            href="./index.html"
+            class="brand"
+        >
+            <span class="brand-mark">
+                GP
+            </span>
+
+            <span class="brand-name">
+                Guia Pro
+            </span>
+        </a>
+
+
+        <nav
+            class="main-nav"
+            aria-label="Navegación principal"
+        >
+
+            <a
+                href="./index.html"
+                class="main-nav-link"
+            >
+                Buscar
+            </a>
+
+
+            <a
+                href="./professional-login.html"
+                class="main-nav-link"
+            >
+                Soy profesional
+            </a>
+
+        </nav>
+
+
+        <span class="header-location">
+            Resistencia, Chaco
+        </span>
+
+    </div>
+</header>
+
+
+<main>
+
+    <section class="search-section">
+
+        <div class="container">
+
+            <div class="search-intro">
+
+                <span class="eyebrow">
+                    DIRECTORIO LOCAL
+                </span>
+
+
+                <h1>
+                    Encontrá quién puede
+                    <span>resolverlo.</span>
+                </h1>
+
+
+                <p>
+                    Buscá profesionales y oficios de confianza
+                    en tu zona.
+                </p>
+
+            </div>
+
+
+            <form
+                id="search-form"
+                class="search-form"
+            >
+
+                <div class="field">
+
+                    <label for="query">
+                        ¿Qué necesitás?
+                    </label>
+
+
+                    <select
+                        id="query"
+                        name="query"
+                    >
+
+                        <option value="">
+                            Seleccioná un oficio
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="field">
+
+                    <label for="location">
+                        ¿Dónde?
+                    </label>
+
+
+                    <select
+                        id="location"
+                        name="location"
+                    >
+
+                        <option value="">
+                            Seleccioná una zona
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="search-button"
+                >
+                    Buscar profesionales
+                </button>
+
+            </form>
+
+        </div>
+
+    </section>
+
+
+    <section class="results-section">
+
+        <div class="container">
+
+            <div
+                id="results-header"
+                class="results-header hidden"
+            >
+
+                <div>
+
+                    <span class="eyebrow">
+                        RESULTADOS
+                    </span>
+
+
+                    <h2 id="results-title">
+                        Profesionales encontrados
+                    </h2>
+
+                </div>
+
+
+                <span
+                    id="results-count"
+                    class="results-count"
+                ></span>
+
+            </div>
+
+
+            <div
+                id="loading"
+                class="state-message hidden"
+            >
+                Buscando profesionales...
+            </div>
+
+
+            <div
+                id="error"
+                class="state-message error hidden"
+            ></div>
+
+
+            <div
+                id="empty"
+                class="state-message hidden"
+            >
+
+                <h3>
+                    No encontramos profesionales.
+                </h3>
+
+
+                <p>
+                    Probá con otro oficio o zona.
+                </p>
+
+            </div>
+
+
+            <div
+                id="results"
+                class="results-grid"
+            ></div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<script src="./app.js"></script>
+
+</body>
+</html>

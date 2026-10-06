@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Administración — Guia Pro</title>
+
+    <link rel="stylesheet" href="./styles.css">
+</head>
+
+<body>
+
+<header class="site-header">
+    <div class="container header-inner">
+
+        <a href="./index.html" class="brand">
+    <span class="brand-mark">GP</span>
+    <span class="brand-name">Guia Pro</span>
+</a>
+
+        <div class="header-location">
+            <span>Administración</span>
+            <span>Resistencia, Chaco</span>
+        </div>
+
+    </div>
+</header>
+
+
+<main>
+
+    <!-- =====================================================
+         LOGIN
+         ===================================================== -->
+
+    <section id="loginState" class="profile-section" hidden>
+
+        <div class="container">
+
+            <div class="profile-card admin-login-card">
+
+                <div class="profile-hero">
+
+                    <div>
+                        <p class="eyebrow">
+                            Administración
+                        </p>
+
+                        <h1>
+                            Iniciar sesión
+                        </h1>
+
+                        <p class="hero-description">
+                            Accedé al panel de administración
+                            de Guia Pro.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <form id="loginForm" class="admin-login-form">
+
+                    <div class="form-field">
+
+                        <label for="adminUsername">
+                            Usuario
+                        </label>
+
+                        <input
+                            id="adminUsername"
+                            name="username"
+                            type="text"
+                            autocomplete="username"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-field">
+
+                        <label for="adminPassword">
+                            Contraseña
+                        </label>
+
+                        <input
+                            id="adminPassword"
+                            name="password"
+                            type="password"
+                            autocomplete="current-password"
+                            required
+                        >
+
+                    </div>
+
+
+                    <button type="submit" class="primary-button">
+                        Ingresar
+                    </button>
+
+
+                    <div
+                        id="loginMessage"
+                        class="form-message error"
+                        hidden
+                    ></div>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         PANEL ADMINISTRATIVO
+         ===================================================== -->
+
+    <section id="adminContent" class="profile-section">
+
+        <div class="container">
+
+            <div class="profile-hero">
+
+                <div>
+
+                    <p class="eyebrow">
+                        Administración
+                    </p>
+
+                    <h1>
+                        Profesionales pendientes
+                    </h1>
+
+                    <p class="hero-description">
+                        Revisá los registros antes de publicar
+                        los perfiles en Guia Pro.
+                    </p>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    class="primary-button admin-refresh"
+                    id="refreshButton"
+                >
+                    Actualizar
+                </button>
+
+            </div>
+
+
+            <div
+                id="adminMessage"
+                class="form-message"
+                hidden
+            ></div>
+
+
+            <div
+                id="loadingState"
+                class="profile-card"
+                hidden
+            >
+                Cargando registros...
+            </div>
+
+
+            <div
+                id="emptyState"
+                class="profile-card"
+            >
+
+                <h2>
+                    No hay registros pendientes
+                </h2>
+
+                <p>
+                    Todos los profesionales registrados
+                    fueron revisados.
+                </p>
+
+            </div>
+
+
+            <div
+                id="pendingList"
+                class="admin-list"
+            ></div>
+
+
+            <div class="admin-section-divider"></div>
+
+
+            <!-- =================================================
+                 PROFESIONALES
+                 ================================================= -->
+
+            <div class="profile-hero admin-professionals-header">
+
+                <div>
+
+                    <p class="eyebrow">
+                        Gestión
+                    </p>
+
+                    <h2>
+                        Profesionales
+                    </h2>
+
+                    <p class="hero-description">
+                        Administrá el estado de los profesionales
+                        registrados en Guia Pro.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div
+                id="professionalsLoadingState"
+                class="profile-card"
+                hidden
+            >
+                Cargando profesionales...
+            </div>
+
+
+            <div
+                id="professionalsEmptyState"
+                class="profile-card"
+                hidden
+            >
+
+                <h2>
+                    No hay profesionales registrados
+                </h2>
+
+                <p>
+                    Todavía no hay profesionales en Guia Pro.
+                </p>
+
+            </div>
+
+
+            <div
+                id="professionalsList"
+                class="admin-list"
+            ></div>
+
+
+            <!-- =================================================
+                 EDITOR DE PROFESIONAL
+                 ================================================= -->
+
+            <div
+                id="admin-profile-edit-panel"
+                class="profile-card admin-edit-panel"
+                hidden
+            >
+
+                <div class="admin-edit-header">
+
+                    <div>
+
+                        <p class="eyebrow">
+                            Administración
+                        </p>
+
+                        <h2 id="admin-edit-title">
+                            Editar profesional
+                        </h2>
+
+                        <p class="hero-description">
+                            Modificá la información pública
+                            del profesional.
+                        </p>
+
+                    </div>
+
+                    <button
+                        type="button"
+                        id="admin-profile-edit-cancel-top"
+                        class="admin-edit-close"
+                        aria-label="Cerrar editor"
+                    >
+                        ×
+                    </button>
+
+                </div>
+
+
+                <form id="admin-profile-edit-form">
+
+                    <!-- =========================================
+                         SECCIÓN 01 — INFORMACIÓN PÚBLICA
+                         ========================================= -->
+
+                    <section class="admin-edit-section">
+
+                        <div class="admin-edit-section-heading">
+
+                            <span class="admin-edit-section-number">
+                                01
+                            </span>
+
+                            <div>
+
+                                <h3>
+                                    Información pública
+                                </h3>
+
+                                <p>
+                                    Datos que los usuarios podrán
+                                    consultar en el perfil.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="form-field admin-edit-description">
+
+                            <label for="admin-profile-description">
+                                Descripción
+                            </label>
+
+                            <textarea
+                                id="admin-profile-description"
+                                rows="5"
+                                maxlength="2000"
+                                placeholder="Contá brevemente qué hace y qué tipo de trabajos realiza."
+                            ></textarea>
+
+                            <small>
+                                Una descripción clara ayuda a entender
+                                qué servicios ofrece el profesional.
+                            </small>
+
+                        </div>
+
+
+                        <div class="admin-edit-grid admin-edit-grid-3">
+
+                            <div class="form-field">
+
+                                <label for="admin-profile-years">
+                                    Años de experiencia
+                                </label>
+
+                                <input
+                                    id="admin-profile-years"
+                                    type="number"
+                                    min="0"
+                                    max="80"
+                                    placeholder="Ej. 10"
+                                >
+
+                            </div>
+
+
+                            <div class="form-field">
+
+                                <label for="admin-profile-whatsapp">
+                                    WhatsApp
+                                </label>
+
+                                <input
+                                    id="admin-profile-whatsapp"
+                                    type="text"
+                                    maxlength="50"
+                                    placeholder="Ej. 3624..."
+                                >
+
+                            </div>
+
+
+                            <div class="form-field">
+
+                                <label for="admin-profile-instagram">
+                                    Instagram
+                                </label>
+
+                                <input
+                                    id="admin-profile-instagram"
+                                    type="text"
+                                    maxlength="150"
+                                    placeholder="@usuario"
+                                >
+
+                            </div>
+
+                        </div>
+
+                    </section>
+
+
+                    <!-- =========================================
+                         SECCIÓN 02 — SERVICIOS
+                         ========================================= -->
+
+                    <section class="admin-edit-section">
+
+                        <div class="admin-edit-section-heading">
+
+                            <span class="admin-edit-section-number">
+                                02
+                            </span>
+
+                            <div>
+
+                                <h3>
+                                    Servicios
+                                </h3>
+
+                                <p>
+                                    Indicá qué trabajos realiza
+                                    el profesional.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="form-field">
+
+                            <label for="admin-profile-categories">
+                                Servicios ofrecidos
+                            </label>
+
+                            <select
+                                id="admin-profile-categories"
+                                multiple
+                            ></select>
+
+                            <small>
+                                Podés seleccionar más de un servicio.
+                                Mantené presionada la tecla Ctrl para
+                                seleccionar varias opciones.
+                            </small>
+
+                        </div>
+
+                    </section>
+
+
+                    <!-- =========================================
+                         SECCIÓN 03 — ZONAS
+                         ========================================= -->
+
+                    <section class="admin-edit-section">
+
+                        <div class="admin-edit-section-heading">
+
+                            <span class="admin-edit-section-number">
+                                03
+                            </span>
+
+                            <div>
+
+                                <h3>
+                                    Zonas de trabajo
+                                </h3>
+
+                                <p>
+                                    Definí dónde trabaja habitualmente
+                                    el profesional.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="form-field">
+
+                            <label for="admin-profile-locations">
+                                Zonas donde trabaja
+                            </label>
+
+                            <select
+                                id="admin-profile-locations"
+                                multiple
+                            ></select>
+
+                            <small>
+                                Podés seleccionar más de una zona.
+                                Mantené presionada la tecla Ctrl para
+                                seleccionar varias opciones.
+                            </small>
+
+                        </div>
+
+                    </section>
+
+
+                    <!-- =========================================
+                         PIE DEL FORMULARIO
+                         ========================================= -->
+
+                    <div class="admin-edit-footer">
+
+                        <div
+                            id="admin-profile-edit-message"
+                            class="form-message"
+                            hidden
+                        ></div>
+
+
+                        <div class="admin-edit-buttons">
+
+                            <button
+                                type="button"
+                                id="admin-profile-edit-cancel"
+                                class="secondary-button"
+                            >
+                                Cancelar
+                            </button>
+
+                            <button
+                                type="submit"
+                                class="primary-button"
+                            >
+                                Guardar cambios
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<script src="./admin.js?v=4"></script>
+
+</body>
+
+</html>

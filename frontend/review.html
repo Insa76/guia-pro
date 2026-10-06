@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Valorar trabajo · Guia Pro</title>
+
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+
+<body>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="./index.html" class="brand">
+        Guia Pro
+      </a>
+
+      <div class="header-location">
+        Resistencia, Chaco
+      </div>
+    </div>
+  </header>
+
+  <main class="container review-page">
+
+    <section id="loading-state" class="state-card">
+      <p>Cargando valoración...</p>
+    </section>
+
+    <section id="error-state" class="state-card error-state hidden">
+      <h2>No pudimos cargar esta valoración</h2>
+
+      <p id="error-message">
+        El enlace puede ser inválido o haber sido utilizado anteriormente.
+      </p>
+
+      <a
+        href="./index.html"
+        class="button secondary-button"
+      >
+        Ir a Guia Pro
+      </a>
+    </section>
+
+    <section
+      id="review-content"
+      class="review-card hidden"
+    >
+
+      <span class="eyebrow">
+        Guia Pro
+      </span>
+
+      <h1>¿Cómo fue tu experiencia?</h1>
+
+      <p class="review-intro">
+        Tu opinión ayuda a construir la reputación de los profesionales
+        de Guia Pro.
+      </p>
+
+      <div class="review-professional">
+
+        <span class="review-label">
+          Profesional
+        </span>
+
+        <h2 id="professional-name">
+          —
+        </h2>
+
+        <p id="job-title">
+          —
+        </p>
+
+      </div>
+
+      <form id="review-form">
+
+        <div class="review-rating-section">
+
+          <span class="review-label">
+            Tu valoración
+          </span>
+
+          <div
+            id="rating-buttons"
+            class="rating-buttons"
+          >
+
+            <button type="button" data-rating="1">★</button>
+            <button type="button" data-rating="2">★</button>
+            <button type="button" data-rating="3">★</button>
+            <button type="button" data-rating="4">★</button>
+            <button type="button" data-rating="5">★</button>
+
+          </div>
+
+          <p
+            id="rating-label"
+            class="rating-label"
+          >
+            Seleccioná una valoración
+          </p>
+
+        </div>
+
+        <div class="form-field">
+
+          <label for="comment">
+            Comentario
+          </label>
+
+          <textarea
+            id="comment"
+            name="comment"
+            rows="5"
+            maxlength="2000"
+            placeholder="Contale a otros usuarios cómo fue tu experiencia."
+          ></textarea>
+
+        </div>
+
+        <button
+          id="submit-review-button"
+          type="submit"
+          class="button primary-button"
+          disabled
+        >
+          Publicar valoración
+        </button>
+
+        <div
+          id="form-message"
+          class="form-message hidden"
+        ></div>
+
+      </form>
+
+    </section>
+
+    <section
+      id="success-state"
+      class="state-card success-review-card hidden"
+    >
+
+      <div class="success-icon">
+        ✓
+      </div>
+
+      <span class="eyebrow">
+        Valoración enviada
+      </span>
+
+      <h1>¡Gracias por tu opinión!</h1>
+
+      <p>
+        Tu valoración fue registrada correctamente y ayudará
+        a otros usuarios a conocer la experiencia de clientes reales.
+      </p>
+
+      <a
+        href="./index.html"
+        class="button primary-button"
+      >
+        Volver a Guia Pro
+      </a>
+
+    </section>
+
+  </main>
+
+  <script src="./review.js"></script>
+
+</body>
+</html>

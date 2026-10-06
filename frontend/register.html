@@ -1,0 +1,207 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrate como profesional — Guia Pro</title>
+    <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+
+<header class="site-header">
+    <div class="container header-inner">
+        <a href="./index.html" class="brand">Guia Pro</a>
+
+        <div class="header-location">
+            <span>Resistencia</span>
+            <span>Chaco</span>
+        </div>
+    </div>
+</header>
+
+<main>
+    <section class="profile-section">
+        <div class="container">
+
+            <div class="profile-hero">
+                <div>
+                    <p class="eyebrow">Profesionales</p>
+                    <h1>Registrate en Guia Pro</h1>
+                    <p class="hero-description">
+                        Mostrá lo que hacés, tu experiencia y cómo pueden contactarte.
+                        Tu perfil quedará pendiente de revisión antes de aparecer públicamente.
+                    </p>
+                </div>
+            </div>
+
+            <div class="profile-grid">
+
+                <section class="profile-card">
+
+                    <h2>Datos profesionales</h2>
+
+                    <form id="registerForm">
+
+                        <div class="form-grid">
+
+                            <div class="form-group">
+                                <label for="firstName">Nombre</label>
+                                <input
+                                    type="text"
+                                    id="firstName"
+                                    name="first_name"
+                                    required
+                                    minlength="2"
+                                    maxlength="100"
+                                    placeholder="Ej. Juan"
+                                >
+                            </div>
+
+                            <div class="form-group">
+                                <label for="lastName">Apellido</label>
+                                <input
+                                    type="text"
+                                    id="lastName"
+                                    name="last_name"
+                                    required
+                                    minlength="2"
+                                    maxlength="100"
+                                    placeholder="Ej. Pérez"
+                                >
+                            </div>
+
+                            <div class="form-group">
+                                <label for="phone">Teléfono</label>
+                                <input
+                                    type="tel"
+                                    id="phone"
+                                    name="phone"
+                                    required
+                                    minlength="6"
+                                    maxlength="30"
+                                    placeholder="Ej. 3624000000"
+                                >
+                            </div>
+
+                            <div class="form-group">
+                                <label for="whatsapp">WhatsApp</label>
+                                <input
+                                    type="tel"
+                                    id="whatsapp"
+                                    name="whatsapp"
+                                    maxlength="30"
+                                    placeholder="Ej. 3624000000"
+                                >
+                            </div>
+
+                            <div class="form-group">
+                                <label for="category">Oficio</label>
+                                <select id="category" name="category_id" required>
+                                    <option value="">Seleccioná tu oficio</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="location">Localidad</label>
+                                <select id="location" name="location_id" required>
+                                    <option value="">Seleccioná tu localidad</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="yearsExperience">Años de experiencia</label>
+                                <input
+                                    type="number"
+                                    id="yearsExperience"
+                                    name="years_experience"
+                                    min="0"
+                                    max="80"
+                                    placeholder="Ej. 10"
+                                >
+                            </div>
+
+                            <div class="form-group">
+                                <label for="instagram">Instagram</label>
+                                <input
+                                    type="text"
+                                    id="instagram"
+                                    name="instagram"
+                                    maxlength="150"
+                                    placeholder="@tuusuario"
+                                >
+                            </div>
+
+                        </div>
+
+                        <div class="form-group">
+                            <label for="description">Contanos qué hacés</label>
+                            <textarea
+                                id="description"
+                                name="description"
+                                maxlength="2000"
+                                rows="5"
+                                placeholder="Describí brevemente tus servicios, especialidades o experiencia."
+                            ></textarea>
+                        </div>
+
+                        <div id="formMessage" class="form-message" hidden></div>
+
+                        <button type="submit" class="primary-button" id="submitButton">
+                            Registrarme en Guia Pro
+                        </button>
+
+                    </form>
+
+                </section>
+
+                <aside class="profile-card">
+
+                    <h2>¿Qué pasa después?</h2>
+
+                    <div class="profile-services">
+
+                        <div class="profile-service">
+                            <strong>1. Completás tus datos</strong>
+                            <p>
+                                Cargás tu información profesional y el servicio que ofrecés.
+                            </p>
+                        </div>
+
+                        <div class="profile-service">
+                            <strong>2. Revisamos tu registro</strong>
+                            <p>
+                                Verificamos la información antes de publicar el perfil.
+                            </p>
+                        </div>
+
+                        <div class="profile-service">
+                            <strong>3. Tu perfil se publica</strong>
+                            <p>
+                                Una vez aprobado, las personas podrán encontrarte y contactarte.
+                            </p>
+                        </div>
+
+                    </div>
+
+                    <div class="profile-contact">
+                        <strong>Importante</strong>
+                        <p>
+                            Registrarte es gratuito. Guia Pro no garantiza ni recomienda
+                            trabajos o profesionales.
+                        </p>
+                    </div>
+
+                </aside>
+
+            </div>
+
+        </div>
+    </section>
+</main>
+
+<script src="./register.js"></script>
+
+</body>
+</html>
+
