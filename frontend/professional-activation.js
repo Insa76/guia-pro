@@ -1,4 +1,4 @@
-const API_BASE_URL = "http://localhost:8000";
+const API_BASE_URL = "https://guia-pro.onrender.com";
 
 const loadingState = document.getElementById("loading-state");
 const errorState = document.getElementById("error-state");

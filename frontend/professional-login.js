@@ -1,4 +1,4 @@
-const API_BASE_URL = "http://localhost:8000";
+const API_BASE_URL = "https://guia-pro.onrender.com";
 
 const PROFESSIONAL_TOKEN_STORAGE_KEY =
   "guia_pro_professional_token";

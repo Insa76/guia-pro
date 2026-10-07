@@ -1,5 +1,5 @@
 
-const API_BASE_URL = "http://localhost:8000";
+const API_BASE_URL = "https://guia-pro.onrender.com";
 
 const form = document.getElementById("registerForm");
 const categorySelect = document.getElementById("category");
