@@ -65,26 +65,58 @@
     }
 
     .login-field input:focus {
-      outline: 2px solid #2563eb;
-      outline-offset: 2px;
-    }
+  outline: 2px solid #2f7d32;
+  outline-offset: 2px;
+}
 
-    .login-submit {
-      width: 100%;
-      padding: 14px;
-      border: none;
-      border-radius: 10px;
-      background: #2563eb;
-      color: white;
-      font: inherit;
-      font-weight: 700;
-      cursor: pointer;
-    }
+.login-submit {
+  width: 100%;
+  padding: 14px;
+  border: none;
+  border-radius: 10px;
+  background: #2f7d32;
+  color: white;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.login-submit:hover {
+  background: #256b29;
+}
+
+.brand {
+  color: #2f7d32;
+  font-weight: 800;
+}
 
     .login-submit:disabled {
       opacity: 0.65;
       cursor: wait;
     }
+
+    .register-professional {
+  margin-top: 24px;
+  padding-top: 24px;
+  border-top: 1px solid #e5e7eb;
+  text-align: center;
+}
+
+.register-professional p {
+  margin: 0 0 10px;
+  color: #64748b;
+  font-size: 14px;
+}
+
+.register-professional-link {
+  color: #2563eb;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.register-professional-link:hover {
+  text-decoration: underline;
+}
 
     .login-error {
       padding: 12px;
@@ -202,12 +234,23 @@
 
 
     <button
-      id="login-submit"
-      class="login-submit"
-      type="submit"
-    >
-      Ingresar
-    </button>
+  id="login-submit"
+  class="login-submit"
+  type="submit"
+>
+  Ingresar
+</button>
+
+<div class="register-professional">
+  <p>¿Todavía no estás registrado?</p>
+
+  <a
+    href="./professional-register.html"
+    class="register-professional-link"
+  >
+    Crear mi perfil profesional
+  </a>
+</div>
 
   </form>
 

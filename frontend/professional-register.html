@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Registrarme · Guia Pro</title>
+
+  <link rel="stylesheet" href="./styles.css">
+
+  <style>
+    .register-page {
+      min-height: calc(100vh - 90px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 48px 20px;
+    }
+
+    .register-card {
+      width: 100%;
+      max-width: 520px;
+      padding: 36px;
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+      border-radius: 20px;
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.06);
+    }
+
+    .register-card h1 {
+      margin: 0 0 10px;
+      font-size: 30px;
+    }
+
+    .register-description {
+      margin-bottom: 28px;
+      color: #64748b;
+      line-height: 1.6;
+    }
+
+    .register-form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .register-field {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .register-field label {
+      font-weight: 600;
+    }
+
+    .register-field input,
+    .register-field select {
+      width: 100%;
+      padding: 13px 14px;
+      border: 1px solid #cbd5e1;
+      border-radius: 10px;
+      font: inherit;
+      box-sizing: border-box;
+      background: #ffffff;
+    }
+
+    .register-field input:focus,
+    .register-field select:focus {
+      outline: 2px solid #2f7d32;
+      outline-offset: 2px;
+    }
+
+    .register-submit {
+      width: 100%;
+      padding: 14px;
+      border: none;
+      border-radius: 10px;
+      background: #2563eb;
+      color: white;
+      font: inherit;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .register-submit:disabled {
+      opacity: 0.65;
+      cursor: wait;
+    }
+
+    .register-message {
+      padding: 12px;
+      border-radius: 10px;
+      font-size: 14px;
+    }
+
+    .register-error {
+      background: #fef2f2;
+      color: #b91c1c;
+    }
+
+    .register-success {
+      background: #f0fdf4;
+      color: #166534;
+    }
+
+    .register-login {
+      margin-top: 24px;
+      padding-top: 24px;
+      border-top: 1px solid #e5e7eb;
+      text-align: center;
+    }
+
+    .register-login p {
+      margin: 0 0 10px;
+      color: #64748b;
+      font-size: 14px;
+    }
+
+    .register-login a {
+      color: #2563eb;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .register-login a:hover {
+      text-decoration: underline;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    .brand {
+  color: #2f7d32;
+  font-weight: 800;
+}
+
+.register-submit {
+  background: #2f7d32;
+}
+
+.register-submit:hover {
+  background: #256b29;
+}
+  </style>
+</head>
+
+<body>
+
+  <header class="site-header">
+    <div class="container header-inner">
+
+      <a
+        href="./index.html"
+        class="brand"
+      >
+        Guia Pro
+      </a>
+
+      <nav
+        class="main-nav"
+        aria-label="Navegación principal"
+      >
+
+        <a
+          href="./index.html"
+          class="main-nav-link"
+        >
+          Buscar
+        </a>
+
+        <a
+          href="./professional-login.html"
+          class="main-nav-link"
+        >
+          Soy profesional
+        </a>
+
+      </nav>
+
+      <div class="header-location">
+        Resistencia, Chaco
+      </div>
+
+    </div>
+  </header>
+
+  <main class="register-page">
+
+    <section class="register-card">
+
+      <h1>Creá tu perfil profesional</h1>
+
+      <p class="register-description">
+        Sumate a Guia Pro y hacé que tus clientes conozcan
+        tu experiencia, tus trabajos y las opiniones de
+        quienes ya contrataron tus servicios.
+      </p>
+
+      <form
+        id="professional-register-form"
+        class="register-form"
+      >
+
+        <div class="register-field">
+
+          <label for="first_name">
+            Nombre
+          </label>
+
+          <input
+            id="first_name"
+            name="first_name"
+            type="text"
+            autocomplete="given-name"
+            required
+          >
+
+        </div>
+
+        <div class="register-field">
+
+          <label for="last_name">
+            Apellido
+          </label>
+
+          <input
+            id="last_name"
+            name="last_name"
+            type="text"
+            autocomplete="family-name"
+            required
+          >
+
+        </div>
+
+        <div class="register-field">
+
+          <label for="phone">
+            Teléfono
+          </label>
+
+          <input
+            id="phone"
+            name="phone"
+            type="tel"
+            autocomplete="tel"
+            placeholder="Ej. 3624554433"
+            required
+          >
+
+        </div>
+
+        <div class="register-field">
+
+          <label for="password">
+            Contraseña
+          </label>
+
+          <input
+            id="password"
+            name="password"
+            type="password"
+            autocomplete="new-password"
+            minlength="6"
+            required
+          >
+
+        </div>
+
+        <div class="register-field">
+
+          <label for="category_id">
+            Oficio
+          </label>
+
+          <select
+            id="category_id"
+            name="category_id"
+            required
+          >
+            <option value="">
+              Seleccioná tu oficio
+            </option>
+          </select>
+
+        </div>
+
+        <div class="register-field">
+
+          <label for="location_id">
+            Ciudad
+          </label>
+
+          <select
+            id="location_id"
+            name="location_id"
+            required
+          >
+            <option value="">
+              Seleccioná tu ciudad
+            </option>
+          </select>
+
+        </div>
+
+        <p
+          id="register-error"
+          class="register-message register-error hidden"
+          role="alert"
+        ></p>
+
+        <p
+          id="register-success"
+          class="register-message register-success hidden"
+          role="status"
+        ></p>
+
+        <button
+          id="register-submit"
+          class="register-submit"
+          type="submit"
+        >
+          Solicitar registro
+        </button>
+
+      </form>
+
+      <div class="register-login">
+
+        <p>
+          ¿Ya tenés una cuenta?
+        </p>
+
+        <a href="./professional-login.html">
+          Ingresar a mi panel
+        </a>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <script src="./professional-register.js"></script>
+
+</body>
+</html>

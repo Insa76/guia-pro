@@ -6,6 +6,7 @@ from app.core.professional_auth import (
     PROFESSIONAL_TOKEN_EXPIRE_SECONDS,
     create_professional_token,
     verify_password,
+    hash_password,
 )
 from app.core.rate_limit import professional_login_limiter
 from app.db.session import get_db
@@ -14,14 +15,108 @@ from app.schemas.professional_auth import (
     ProfessionalLoginRequest,
     ProfessionalLoginResponse,
     ProfessionalMeResponse,
+    ProfessionalRegisterRequest,
+    ProfessionalRegisterResponse,
 )
 from app.core.professional_auth import require_professional
+from app.models.category import Category
+from app.models.location import Location
+from app.models.professional_category import ProfessionalCategory
+from app.models.professional_location import ProfessionalLocation
 
 
 router = APIRouter(
     prefix="/api/professional/auth",
     tags=["professional-auth"],
 )
+
+
+@router.post(
+    "/register",
+    response_model=ProfessionalRegisterResponse,
+)
+def professional_register(
+    data: ProfessionalRegisterRequest,
+    db: Session = Depends(get_db),
+):
+    first_name = data.first_name.strip()
+    last_name = data.last_name.strip()
+    phone = data.phone.strip()
+
+    if not first_name or not last_name or not phone:
+        raise HTTPException(
+            status_code=400,
+            detail="Nombre, apellido y teléfono son obligatorios.",
+        )
+
+    existing_professional = db.scalar(
+        select(Professional).where(
+            Professional.phone == phone
+        )
+    )
+
+    if existing_professional is not None:
+        raise HTTPException(
+            status_code=409,
+            detail="Ya existe un profesional registrado con ese teléfono.",
+        )
+
+    category = db.get(
+        Category,
+        data.category_id,
+    )
+
+    if category is None or not category.is_active:
+        raise HTTPException(
+            status_code=400,
+            detail="El oficio seleccionado no es válido.",
+        )
+
+    location = db.get(
+        Location,
+        data.location_id,
+    )
+
+    if location is None or not location.is_active:
+        raise HTTPException(
+            status_code=400,
+            detail="La localidad seleccionada no es válida.",
+        )
+
+    professional = Professional(
+        first_name=first_name,
+        last_name=last_name,
+        phone=phone,
+        password_hash=hash_password(data.password),
+        account_enabled=False,
+        is_active=False,
+        identity_verified=False,
+    )
+
+    db.add(professional)
+    db.flush()
+
+    professional_category = ProfessionalCategory(
+        professional_id=professional.id,
+        category_id=category.id,
+    )
+
+    professional_location = ProfessionalLocation(
+        professional_id=professional.id,
+        location_id=location.id,
+    )
+
+    db.add(professional_category)
+    db.add(professional_location)
+
+    db.commit()
+
+    return {
+        "message": (
+            "Solicitud recibida. "
+            "Tu perfil será revisado antes de ser activado."
+        )
+    }
 
 
 @router.post(
